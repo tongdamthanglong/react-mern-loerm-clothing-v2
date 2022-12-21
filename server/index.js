@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 
 import authRoutes from "./routes/auth.js";
+import categoryRoutes from "./routes/category.js";
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(express.json());
 
 // router middlewares
 app.use("/api", authRoutes);
+app.use("/api", categoryRoutes);
 
 // PORT
 const port = process.env.PORT;
