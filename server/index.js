@@ -5,6 +5,7 @@ import morgan from "morgan";
 
 import authRoutes from "./routes/auth.js";
 import categoryRoutes from "./routes/category.js";
+import productRoutes from "./routes/product.js";
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(express.json());
 // router middlewares
 app.use("/api", authRoutes);
 app.use("/api", categoryRoutes);
+app.use("/api", productRoutes);
 
 // PORT
 const port = process.env.PORT;
