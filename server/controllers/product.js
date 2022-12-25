@@ -45,11 +45,24 @@ export const list = async (req, res) => {
   try {
     const products = await Product.find({})
       .select("-photo")
+      .populate("category")
       // limit list product per time
       .limit(12)
       .sort({ createAt: -1 });
     res.json(products);
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const read = async (req, res) => {
+  try {
+    const product = await Product.findOne({ slug: req.params.slug })
+      .select("-photo")
+      .populate("category");
+    res.json(product);
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json(error.message);
   }
 };
