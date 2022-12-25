@@ -25,19 +25,19 @@ export const create = async (req, res) => {
     }
 
     //create product
-    const product = await new Product({
+    const product = new Product({
       ...req.fields,
       slug: slugify(name),
-    }).save();
+    });
 
     if (photo) {
       product.photo.data = fs.readFileSync(photo.path);
       product.photo.contentType = photo.type;
     }
+    await product.save();
     res.json(product);
   } catch (error) {
     console.log(error);
-    return res.status(400).json(error.message);
   }
 };
 
@@ -63,6 +63,19 @@ export const read = async (req, res) => {
     res.json(product);
   } catch (error) {
     console.log(error);
-    return res.status(400).json(error.message);
+  }
+};
+
+export const photo = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.productId).select(
+      "photo"
+    );
+    if (product.photo.data) {
+      res.set("Content-Type", product.photo.contentType);
+      return res.send(product.photo.data);
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
