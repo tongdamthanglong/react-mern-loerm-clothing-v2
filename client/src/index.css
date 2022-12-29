@@ -1,6 +1,6 @@
 * {
-  padding: 0 !important;
-  margin: 0 !important;
+  /* padding: 0 !important;
+  margin: 0 !important; */
   color: #333 !important;
 }
 
@@ -10,7 +10,8 @@
 
 .nav-link {
   font-weight: 400;
-  margin-left: 25px !important;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
   padding: 6px !important;
   padding-bottom: 3px !important;
 }
