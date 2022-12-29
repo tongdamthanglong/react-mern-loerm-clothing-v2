@@ -10,17 +10,29 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API}/register`, {
-        name,
-        email,
-        password,
-      });
-      console.log(res);
+      // res.data
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API}/register`,
+        {
+          name,
+          email,
+          password,
+        }
+      );
+      console.log(data);
+
+      if (data?.error) {
+        toast.error(data.error);
+      } else {
+        toast.success("Successful!");
+      }
+
       setName("");
       setEmail("");
       setPassword("");
     } catch (error) {
       console.log(error);
+      toast.error("Failed!");
     }
   };
 
