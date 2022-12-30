@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Toaster } from "react-hot-toast";
 
@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Menu />
       <Toaster />
       <Routes>
@@ -17,7 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
-    </>
+    </BrowserRouter>
   );
 }
 

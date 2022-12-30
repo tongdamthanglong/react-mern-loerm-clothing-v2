@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuth } from "../../context/auth";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -6,6 +7,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [auth, setAuth] = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +26,9 @@ const Register = () => {
       if (data?.error) {
         toast.error(data.error);
       } else {
+        // local storage JSON setItem(key, value)
+        localStorage.setItem("auth", JSON.stringify(data));
+        setAuth({ ...auth, user: data.user, token: data.token });
         toast.success("Successful!");
       }
 
