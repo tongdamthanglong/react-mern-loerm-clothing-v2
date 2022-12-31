@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Loading = () => {
-  const [count, setCount] = useState(3);
+  const [count, setCount] = useState(2);
   const navigate = useNavigate();
   useEffect(() => {
     const interval = setInterval(() => {
@@ -15,7 +15,9 @@ const Loading = () => {
   }, [count]);
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
-      Redirect to login in {count}s
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     </div>
   );
 };
