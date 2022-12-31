@@ -26,7 +26,7 @@ const Login = () => {
         localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, user: data.user, token: data.token });
         toast.success("Login Successful!");
-        navigate("/");
+        navigate("/dashboard");
       }
 
       setEmail("");

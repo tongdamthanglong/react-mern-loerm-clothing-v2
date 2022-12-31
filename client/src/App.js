@@ -6,6 +6,8 @@ import Menu from "./components/nav/Menu";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
+import Dashboard from "./pages/user/Dashboard";
+import PrivateRoute from "./components/routes/PrivateRoute";
 
 function App() {
   return (
@@ -16,6 +18,9 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<PrivateRoute />}>
+          <Route path="" element={<Dashboard />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

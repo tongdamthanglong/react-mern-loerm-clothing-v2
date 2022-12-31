@@ -32,7 +32,7 @@ const Register = () => {
         localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, user: data.user, token: data.token });
         toast.success("Registration Successful!");
-        navigate("/");
+        navigate("/dashboard");
       }
 
       setName("");
