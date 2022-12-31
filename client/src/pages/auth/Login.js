@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -7,7 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -24,14 +25,15 @@ const Login = () => {
         // local storage JSON setItem(key, value)
         localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, user: data.user, token: data.token });
-        toast.success("Successful!");
+        toast.success("Login Successful!");
+        navigate("/");
       }
 
       setEmail("");
       setPassword("");
     } catch (error) {
       console.log(error);
-      toast.error("Failed!");
+      toast.error("Login Failed.");
     }
   };
 
