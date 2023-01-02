@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -8,7 +8,10 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
+
   const navigate = useNavigate();
+  const location = useLocation();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -26,7 +29,7 @@ const Login = () => {
         localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, user: data.user, token: data.token });
         toast.success("Login Successful!");
-        navigate("/dashboard");
+        navigate(location.state || "/dashboard");
       }
 
       setEmail("");
