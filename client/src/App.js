@@ -7,6 +7,7 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
 import Dashboard from "./pages/user/Dashboard";
+import NotFound from "./pages/notFound/NotFound";
 import PrivateRoute from "./components/routes/PrivateRoute";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="" element={<Dashboard />} />
         </Route>
+        <Route path="*" element={<NotFound />} replace />
       </Routes>
     </BrowserRouter>
   );
