@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
     try {
       // res.data
-      const { data } = await axios.post(`${process.env.REACT_APP_API}/login`, {
+      const { data } = await axios.post(`/login`, {
         email,
         password,
       });

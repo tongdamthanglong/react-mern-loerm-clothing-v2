@@ -11,21 +11,21 @@ const PrivateRoute = () => {
 
   useEffect(() => {
     const authCheck = async () => {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/auth-check`,
-        {
-          headers: {
-            Authorization: auth?.token,
-          },
-        }
-      );
+      // .get(`${process.env.REACT_APP_API}/auth-check`,
+      //   {
+      //     headers: {
+      //       Authorization: auth?.token,
+      //     },
+      // })
+
+      const { data } = await axios.get("/auth-check");
       if (data.ok) {
         setLogged(true);
       } else {
         setLogged(false);
       }
     };
-    authCheck();
+    if (auth?.token) authCheck();
   }, [auth?.token]);
 
   //   useEffect(() => {

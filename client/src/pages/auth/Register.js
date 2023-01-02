@@ -15,14 +15,11 @@ const Register = () => {
     e.preventDefault();
     try {
       // res.data
-      const { data } = await axios.post(
-        `${process.env.REACT_APP_API}/register`,
-        {
-          name,
-          email,
-          password,
-        }
-      );
+      const { data } = await axios.post(`/register`, {
+        name,
+        email,
+        password,
+      });
       console.log(data);
 
       if (data?.error) {
