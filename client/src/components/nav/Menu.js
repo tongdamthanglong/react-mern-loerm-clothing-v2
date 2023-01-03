@@ -36,15 +36,35 @@ const Menu = () => {
             </li>
           </>
         ) : (
-          <li className="nav-item">
-            <a
-              onClick={handleLogout}
-              className="nav-link"
-              style={{ cursor: "pointer" }}
-            >
-              Logout
-            </a>
-          </li>
+          <div className="dropdown">
+            <li>
+              <a
+                className="nav-link pointer dropdown-toggle"
+                data-bs-toggle="dropdown"
+              >
+                {auth?.user?.name}
+              </a>
+
+              <ul className="dropdown-menu">
+                <li>
+                  <NavLink
+                    className="nav-link"
+                    to={`/dashboard/${
+                      auth?.user?.role === 1 ? "admin" : "user"
+                    }`}
+                  >
+                    Dashboard
+                  </NavLink>
+                </li>
+
+                <li className="nav-item pointer">
+                  <a onClick={handleLogout} className="nav-link">
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </div>
         )}
       </ul>
     </>

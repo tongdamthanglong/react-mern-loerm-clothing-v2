@@ -4,8 +4,14 @@
   color: #333 !important;
 }
 
+::selection {
+  background: transparent;
+}
+
 .active {
-  border-bottom: 2px solid cyan;
+  /* border-bottom: 2px solid cyan; */
+  text-decoration: underline solid cyan 1.5px;
+  text-underline-offset: 7px;
 }
 
 .nav-link {
@@ -14,4 +20,8 @@
   margin-right: 10px !important;
   padding: 6px !important;
   padding-bottom: 3px !important;
+}
+
+.pointer {
+  cursor: pointer;
 }
