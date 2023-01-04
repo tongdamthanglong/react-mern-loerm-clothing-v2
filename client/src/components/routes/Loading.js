@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-const Loading = () => {
+const Loading = ({ path = "login" }) => {
   const [count, setCount] = useState(2);
   const navigate = useNavigate();
   const location = useLocation();
@@ -13,7 +13,7 @@ const Loading = () => {
     // count === 0 then redirect to login page
     // location.pathname ví dụ như là cái /dashboard/intended
     count === 0 &&
-      navigate("/login", {
+      navigate(`/${path}`, {
         state: location.pathname,
       });
     // cleanup
