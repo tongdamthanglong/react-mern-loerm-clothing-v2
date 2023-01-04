@@ -6,7 +6,10 @@ import Menu from "./components/nav/Menu";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
+
 import UserDashboard from "./pages/user/Dashboard";
+import UserProfile from "./pages/user/Profile";
+import UserOrders from "./pages/user/Orders";
 
 import AdminDashboard from "./pages/admin/Dashboard";
 import AdminCategory from "./pages/admin/Category";
@@ -25,14 +28,19 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<UserDashboard />} />
+          <Route path="user/profile" element={<UserProfile />} />
+          <Route path="user/orders" element={<UserOrders />} />
         </Route>
+
         <Route path="/dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/category" element={<AdminCategory />} />
           <Route path="admin/product" element={<AdminProduct />} />
         </Route>
+
         <Route path="*" element={<NotFound />} replace />
       </Routes>
     </BrowserRouter>
