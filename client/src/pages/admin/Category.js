@@ -3,6 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 import AdminMenu from "../../components/nav/AdminMenu";
+import CategoryForm from "../../components/forms/CategoryForm";
 
 const AdminCategory = () => {
   const [name, setName] = useState("");
@@ -49,18 +50,11 @@ const AdminCategory = () => {
           <div className="col-md-9">
             <div className="p-3 mt-2 mb-2 h4 bg-light">Manage Categories</div>
             <div className="p-3">
-              <form onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  className="form-control p-3"
-                  placeholder="Category Name.."
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <button type="submit" className="btn btn-info mt-3 mb-3">
-                  Add Category
-                </button>
-              </form>
+              <CategoryForm
+                value={name}
+                setValue={setName}
+                handleSubmit={handleSubmit}
+              />
               <hr />
               <div className="col">
                 {categories?.map((category) => (
