@@ -11,13 +11,23 @@
 .active {
   /* border-bottom: 2px solid cyan; */
   background-color: transparent;
-  text-decoration: underline solid cyan 1.5px;
+  text-decoration: underline solid #0dcaf0 1.5px;
   text-underline-offset: 7px;
 }
 
 .list-group-item.active {
   color: #fff !important;
+  background-color: #0dcaf0;
+  border: none;
   text-decoration: none;
+}
+
+.btn-info {
+  color: #fff !important;
+}
+
+.btn-outline-info:hover {
+  color: #fff !important;
 }
 
 .nav-link {
