@@ -1,10 +1,8 @@
 import React from "react";
-import { useAuth } from "../../context/auth";
 
 import UserMenu from "../../components/nav/UserMenu";
 
 const Orders = () => {
-  const [auth, setAuth] = useAuth();
   return (
     <>
       <div className="container-fluid">

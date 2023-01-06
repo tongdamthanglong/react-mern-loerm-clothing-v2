@@ -10,8 +10,8 @@ const CategoryForm = ({ value, setValue, handleSubmit }) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button type="submit" className="btn btn-info mt-3 mb-3">
-        Add Category
+      <button type="submit" className="btn btn-info mt-3">
+        Submit
       </button>
     </form>
   );
