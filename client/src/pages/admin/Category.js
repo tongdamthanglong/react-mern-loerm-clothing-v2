@@ -41,7 +41,7 @@ const AdminCategory = () => {
       setName("");
     } catch (error) {
       console.log(error);
-      toast.error("Create Category Failed..");
+      toast.error("Category Existed.");
     }
   };
 
@@ -57,6 +57,24 @@ const AdminCategory = () => {
         toast.success(`${data.name} is updated.`);
         setSelected(null);
         setUpdatingName("");
+        loadCategories();
+        setVisible(false);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Category may already existed.");
+    }
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.delete(`/category/${selected._id}`);
+      if (data?.error) {
+        toast.error(data.error);
+      } else {
+        toast.success(`${data.name} is deleted.`);
+        setSelected(null);
         loadCategories();
         setVisible(false);
       }
@@ -110,6 +128,8 @@ const AdminCategory = () => {
                   value={updatingName}
                   setValue={setUpdatingName}
                   handleSubmit={handleUpdate}
+                  handleDelete={handleDelete}
+                  buttonText="Update"
                 />
               </Modal>
             </div>
