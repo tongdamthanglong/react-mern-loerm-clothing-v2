@@ -21,7 +21,10 @@ const CategoryForm = ({
           {buttonText}
         </button>
         {handleDelete && (
-          <button onClick={handleDelete} className="btn btn-danger mt-3">
+          <button
+            onClick={handleDelete}
+            className="btn btn-danger text-light mt-3"
+          >
             Delete
           </button>
         )}

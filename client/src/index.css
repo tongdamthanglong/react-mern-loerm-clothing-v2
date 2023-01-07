@@ -8,6 +8,10 @@
   background: transparent;
 }
 
+::-webkit-input-placeholder {
+  color: #333 !important;
+}
+
 .active {
   /* border-bottom: 2px solid cyan; */
   background-color: transparent;
