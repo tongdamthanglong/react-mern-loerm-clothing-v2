@@ -30,6 +30,10 @@
   color: #fff !important;
 }
 
+.form-select {
+  --bs-form-select-bg-img: url("");
+}
+
 .nav-link {
   font-weight: 400;
   margin-left: 10px !important;
