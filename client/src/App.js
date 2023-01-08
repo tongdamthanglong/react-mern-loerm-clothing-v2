@@ -7,17 +7,18 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
 
+import PrivateRoute from "./components/routes/PrivateRoute";
 import UserDashboard from "./pages/user/Dashboard";
 import UserProfile from "./pages/user/Profile";
 import UserOrders from "./pages/user/Orders";
 
+import AdminRoute from "./components/routes/AdminRoute";
 import AdminDashboard from "./pages/admin/Dashboard";
 import AdminCategory from "./pages/admin/Category";
 import AdminProduct from "./pages/admin/Product";
+import AdminProducts from "./pages/admin/Products";
 
 import NotFound from "./pages/notFound/NotFound";
-import PrivateRoute from "./components/routes/PrivateRoute";
-import AdminRoute from "./components/routes/AdminRoute";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/category" element={<AdminCategory />} />
           <Route path="admin/product" element={<AdminProduct />} />
+          <Route path="admin/products" element={<AdminProducts />} />
         </Route>
 
         <Route path="*" element={<NotFound />} replace />
