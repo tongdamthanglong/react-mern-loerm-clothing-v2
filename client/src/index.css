@@ -49,3 +49,7 @@
 .pointer {
   cursor: pointer;
 }
+
+.card-button {
+  border-radius: 0px;
+}

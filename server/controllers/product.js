@@ -48,7 +48,7 @@ export const list = async (req, res) => {
       .populate("category")
       // limit list product per time
       .limit(12)
-      .sort({ createAt: -1 });
+      .sort({ createdAt: -1 });
     res.json(products);
   } catch (error) {
     console.log(error);

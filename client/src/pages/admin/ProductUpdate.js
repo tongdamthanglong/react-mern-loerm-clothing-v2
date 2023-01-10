@@ -73,6 +73,7 @@ const ProductUpdate = () => {
       } else {
         toast.success(`${data?.name} is updated.`);
         navigate("/dashboard/admin/products");
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
@@ -202,7 +203,10 @@ const ProductUpdate = () => {
               <button onClick={handleSubmit} className="btn btn-info mb-5">
                 Update Product
               </button>
-              <button onClick={handleDelete} className="btn btn-danger mb-5">
+              <button
+                onClick={handleDelete}
+                className="btn btn-danger mb-5 text-light"
+              >
                 Delete Product
               </button>
             </div>
