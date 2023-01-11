@@ -6,6 +6,7 @@ import Menu from "./components/nav/Menu";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
+import Shop from "./pages/Shop";
 
 import PrivateRoute from "./components/routes/PrivateRoute";
 import UserDashboard from "./pages/user/Dashboard";
@@ -28,6 +29,7 @@ function App() {
       <Toaster />
       <Routes>
         <Route index element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
