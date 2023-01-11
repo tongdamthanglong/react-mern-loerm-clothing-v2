@@ -4,13 +4,13 @@
   color: #333 !important;
 }
 
-::selection {
+/* ::selection {
   background: transparent;
-}
+} */
 
-::-webkit-input-placeholder {
+/* ::-webkit-input-placeholder {
   color: #333 !important;
-}
+} */
 
 .active {
   /* border-bottom: 2px solid cyan; */
@@ -46,6 +46,13 @@
   padding-bottom: 3px !important;
 }
 
+/* antd */
+
+.ant-ribbon-text {
+  color: #fff !important;
+}
+
+/*  */
 .pointer {
   cursor: pointer;
 }

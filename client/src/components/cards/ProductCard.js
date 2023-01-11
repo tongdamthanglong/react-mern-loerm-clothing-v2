@@ -1,13 +1,16 @@
 import React from "react";
 import { Badge } from "antd";
-import moment from "moment";
 
 const ProductCard = ({ product }) => {
   return (
     <div className="card mb-3">
       <Badge.Ribbon text={`${product?.sold} sold`} color="cyan">
         <Badge.Ribbon
-          text={product?.quantity >= 1 ? "In Stock" : "Out of stock"}
+          text={
+            product?.quantity >= 1
+              ? `${product?.quantity} in Stock`
+              : "Out of stock"
+          }
           placement="start"
           color="red"
         >
@@ -22,6 +25,12 @@ const ProductCard = ({ product }) => {
 
       <div className="card-body">
         <h5>{product?.name}</h5>
+        <h4>
+          {product?.price?.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+          })}
+        </h4>
         <p className="card-text">{product?.description?.substring(0, 60)}...</p>
       </div>
 
@@ -39,9 +48,6 @@ const ProductCard = ({ product }) => {
           Add to Cart
         </button>
       </div>
-
-      {/* <p>{moment(product.createdAt).fromNow()}</p>
-      <p>{product.sold} sold</p> */}
     </div>
   );
 };

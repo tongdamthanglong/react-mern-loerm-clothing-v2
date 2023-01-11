@@ -91,7 +91,11 @@ const AdminProduct = () => {
               </label>
             </div>
 
+            <label htmlFor="product-input-name" className="form-label">
+              Name
+            </label>
             <input
+              id="product-input-name"
               type="text"
               className="form-control p-2 mb-3"
               placeholder="Name"
@@ -99,7 +103,11 @@ const AdminProduct = () => {
               onChange={(e) => setName(e.target.value)}
             />
 
+            <label htmlFor="product-input-description" className="form-label">
+              Description
+            </label>
             <textarea
+              id="product-input-description"
               type="text"
               className="form-control p-2 mb-3"
               placeholder="Description"
@@ -107,7 +115,11 @@ const AdminProduct = () => {
               onChange={(e) => setDescription(e.target.value)}
             />
 
+            <label htmlFor="product-input-price" className="form-label">
+              Price
+            </label>
             <input
+              id="product-input-price"
               type="number"
               className="form-control p-2 mb-3"
               placeholder="Price"
@@ -115,7 +127,11 @@ const AdminProduct = () => {
               onChange={(e) => setPrice(e.target.value)}
             />
 
+            <label htmlFor="product-input-quantity" className="form-label">
+              Quantity
+            </label>
             <input
+              id="product-input-quantity"
               type="number"
               min="1"
               className="form-control p-2 mb-3"
@@ -124,8 +140,8 @@ const AdminProduct = () => {
               onChange={(e) => setQuantity(e.target.value)}
             />
 
+            <label className="form-label">Category</label>
             <Select
-              // showSearch
               bordered={false}
               size="large"
               className="form-select mb-3"
@@ -140,6 +156,7 @@ const AdminProduct = () => {
               ))}
             </Select>
 
+            <label className="form-label">Shipping Status</label>
             <Select
               bordered={false}
               size="large"
@@ -151,7 +168,7 @@ const AdminProduct = () => {
               <Option value="0">No</Option>
               <Option value="1">Yes</Option>
             </Select>
-            <button onClick={handleSubmit} className="btn btn-info">
+            <button onClick={handleSubmit} className="btn btn-info mb-5">
               Add Product
             </button>
           </div>
