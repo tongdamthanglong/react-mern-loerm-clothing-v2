@@ -8,6 +8,8 @@ import {
   remove,
   update,
   filteredProducts,
+  productsCount,
+  listProducts,
 } from "../controllers/product.js";
 import { requireSignin, isAdmin } from "../middlewares/auth.js";
 
@@ -20,5 +22,7 @@ router.get("/product/photo/:productId", photo);
 router.delete("/product/:productId", requireSignin, isAdmin, remove);
 router.put("/product/:productId", requireSignin, isAdmin, formidable(), update);
 router.post("/filtered-products", filteredProducts);
+router.get("/products-count", productsCount);
+router.get("/list-products/:page", listProducts);
 
 export default router;
