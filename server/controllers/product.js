@@ -133,3 +133,18 @@ export const update = async (req, res) => {
     console.log(error);
   }
 };
+
+export const filteredProducts = async (req, res) => {
+  try {
+    const { checked, radio } = req.body;
+    let args = {};
+    if (checked.length > 0) args.category = checked;
+    if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] }; //$gte la "greater than equal to". $lte la "less than equal to"
+    console.log("args => ", args);
+    const products = await Product.find(args);
+    console.log("product filtered find on query => ", products.length);
+    res.json(products);
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -34,6 +34,10 @@
   color: #fff !important;
 }
 
+.btn-outline-danger:hover {
+  color: #fff !important;
+}
+
 .form-select {
   --bs-form-select-bg-img: none;
 }
@@ -59,6 +63,10 @@
 
 .card-button {
   border-radius: 0px;
+}
+
+.ant-checkbox-wrapper:first-of-type {
+  margin-left: 8px;
 }
 
 /* #####################JUMBOTRON######################### */

@@ -7,6 +7,7 @@ import {
   photo,
   remove,
   update,
+  filteredProducts,
 } from "../controllers/product.js";
 import { requireSignin, isAdmin } from "../middlewares/auth.js";
 
@@ -18,5 +19,6 @@ router.get("/product/:slug", read);
 router.get("/product/photo/:productId", photo);
 router.delete("/product/:productId", requireSignin, isAdmin, remove);
 router.put("/product/:productId", requireSignin, isAdmin, formidable(), update);
+router.post("/filtered-products", filteredProducts);
 
 export default router;
