@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../context/auth";
 
+import Search from "../forms/Search";
+
 const Menu = () => {
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
@@ -28,21 +30,8 @@ const Menu = () => {
           >
             LOERM SHOP
           </NavLink>
-          <form className="d-flex" style={{ width: "60%" }}>
-            <input
-              type="search"
-              className="form-control"
-              placeholder="Search Product.."
-              style={{ borderRadius: "0px", paddingRight: "80px" }}
-            />
-            <button
-              className="btn btn-info"
-              type="submit"
-              style={{ marginLeft: "-72px", borderRadius: "0px" }}
-            >
-              Search
-            </button>
-          </form>
+
+          <Search style={{ width: "60%" }} />
         </div>
 
         <div>

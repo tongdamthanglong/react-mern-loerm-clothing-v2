@@ -10,6 +10,7 @@ import {
   filteredProducts,
   productsCount,
   listProducts,
+  productsSearch,
 } from "../controllers/product.js";
 import { requireSignin, isAdmin } from "../middlewares/auth.js";
 
@@ -39,5 +40,8 @@ router.post("/filtered-products", filteredProducts);
 // paginate load more product
 router.get("/products-count", productsCount);
 router.get("/list-products/:page", listProducts);
+
+// search product by keyword
+router.get("/products/search/:keyword", productsSearch);
 
 export default router;
