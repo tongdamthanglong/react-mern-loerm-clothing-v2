@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Badge } from "antd";
 
 const ProductCard = ({ product }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="card mb-3">
       <Badge.Ribbon text={`${product?.sold} sold`} color="cyan">
@@ -37,6 +40,7 @@ const ProductCard = ({ product }) => {
       <div className="d-flex justify-content-between">
         <button
           className="btn btn-outline-info col card-button"
+          onClick={() => navigate(`/product/${product?.slug}`)}
           style={{ borderBottomLeftRadius: "5px" }}
         >
           View Details
