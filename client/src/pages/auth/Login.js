@@ -4,6 +4,8 @@ import { useAuth } from "../../context/auth";
 import axios from "axios";
 import toast from "react-hot-toast";
 
+import Jumbotron from "../../components/cards/Jumbotron";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,18 +47,33 @@ const Login = () => {
 
   return (
     <div>
-      <div className="container">
+      <Jumbotron title="Login" subtitle="Deal-a-holics welcomed!" />
+      <div className="container mt-5 mb-5">
         <div className="row">
           <div className="col-md-6 offset-md-3">
             <form onSubmit={handleSubmit}>
+              <label
+                htmlFor="login-email-input"
+                className="form-label fw-semibold"
+              >
+                Email
+              </label>
               <input
+                id="login-email-input"
                 type="email"
                 className="form-control mb-4 p-2"
                 placeholder="Enter email.."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+              <label
+                htmlFor="login-password-input"
+                className="form-label fw-semibold"
+              >
+                Password
+              </label>
               <input
+                id="login-password-input"
                 type="password"
                 className="form-control mb-4 p-2"
                 placeholder="Enter password.."

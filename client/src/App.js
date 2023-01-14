@@ -7,6 +7,7 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
+import Search from "./pages/Search";
 
 import PrivateRoute from "./components/routes/PrivateRoute";
 import UserDashboard from "./pages/user/Dashboard";
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 

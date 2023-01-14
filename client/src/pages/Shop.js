@@ -120,7 +120,7 @@ const Shop = () => {
             <h2 className="p-3 mt-2 mb-2 h4 bg-light text-center">
               {products?.length} Products
             </h2>
-            <div className="row">
+            <div className="row mb-5">
               {products?.map((product) => {
                 return (
                   <div className="col-md-4" key={product._id}>

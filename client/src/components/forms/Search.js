@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useSearch } from "../../context/search";
 import axios from "axios";
 
 const Search = ({ style }) => {
-  const [keyword, setKeyword] = useState("");
-  const [results, setResults] = useState([]);
+  // hook
+  const [values, setValues] = useSearch();
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.get(`/products/search/${keyword}`);
+      const { data } = await axios.get(`/products/search/${values?.keyword}`);
+      setValues({ ...values, results: data });
       console.log(data);
+      navigate("/search");
     } catch (error) {
       console.log(error);
     }
@@ -21,7 +27,8 @@ const Search = ({ style }) => {
         type="search"
         className="form-control"
         placeholder="Search Product.."
-        onChange={(e) => setKeyword(e.target.value)}
+        onChange={(e) => setValues({ ...values, keyword: e.target.value })}
+        value={values.keyword}
         style={{ borderRadius: "0px", paddingRight: "80px" }}
       />
       <button
