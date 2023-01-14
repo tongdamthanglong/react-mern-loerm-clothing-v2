@@ -186,3 +186,22 @@ export const productsSearch = async (req, res) => {
     console.log(error);
   }
 };
+
+// $ne nghĩa là not equal to, ta dùng find để tìm cái id của category
+// $ne: productId nghĩa là ta trừ cái productId này ra thì return lại những productId còn lại
+
+export const relatedProducts = async (req, res) => {
+  try {
+    const { productId, categoryId } = req.params;
+    const related = await Product.find({
+      category: categoryId,
+      _id: { $ne: productId },
+    })
+      .select("-photo")
+      .populate("category")
+      .limit(3);
+    res.json(related);
+  } catch (error) {
+    console.log(error);
+  }
+};

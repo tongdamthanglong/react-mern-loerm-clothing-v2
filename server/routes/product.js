@@ -11,6 +11,7 @@ import {
   productsCount,
   listProducts,
   productsSearch,
+  relatedProducts,
 } from "../controllers/product.js";
 import { requireSignin, isAdmin } from "../middlewares/auth.js";
 
@@ -43,5 +44,8 @@ router.get("/list-products/:page", listProducts);
 
 // search product by keyword
 router.get("/products/search/:keyword", productsSearch);
+
+// related category product
+router.get("/related-products/:productId/:categoryId", relatedProducts);
 
 export default router;

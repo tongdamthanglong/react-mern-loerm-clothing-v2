@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-import { Badge } from "antd";
+import ProductCard from "../components/cards/ProductCard";
 
 const ProductView = () => {
   const [product, setProduct] = useState({});
+  const [related, setRelated] = useState([]);
   const params = useParams();
 
   useEffect(() => {
@@ -17,6 +18,19 @@ const ProductView = () => {
       const { data } = await axios.get(`/product/${params.slug}`);
       console.log(data);
       setProduct(data);
+      loadRelated(data._id, data.category._id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const loadRelated = async (productId, categoryId) => {
+    try {
+      const { data } = await axios.get(
+        `/related-products/${productId}/${categoryId}`
+      );
+      console.log(data);
+      setRelated(data);
     } catch (error) {
       console.log(error);
     }
@@ -85,8 +99,21 @@ const ProductView = () => {
             </li>
           </ul>
         </div>
-        <div className="col-md-12 mt-5">
-          <h3>Related Products</h3>
+        <div className="mt-5">
+          <h3 className="mb-4">Related Products</h3>
+          {related?.length < 1 && (
+            <p className="text-center mt-5">No Product Related.</p>
+          )}
+
+          <div className="row mb-5">
+            {related?.map((product) => {
+              return (
+                <div key={product._id} className="col-md-4">
+                  <ProductCard product={product} />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
