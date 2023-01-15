@@ -1,13 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import useCategory from "../../hooks/useCategory";
 import { useAuth } from "../../context/auth";
 
 import Search from "../forms/Search";
 
 const Menu = () => {
+  // context
   const [auth, setAuth] = useAuth();
+  // hook
+  const categories = useCategory();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -47,6 +50,38 @@ const Menu = () => {
                 Shop
               </NavLink>
             </li>
+
+            <div className="dropdown">
+              <li>
+                <a
+                  className="nav-link pointer dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                >
+                  Categories
+                </a>
+
+                <ul className="dropdown-menu">
+                  <li>
+                    <NavLink className="nav-link" to={`/categories`}>
+                      All Categories
+                    </NavLink>
+                  </li>
+
+                  {categories?.map((category) => {
+                    return (
+                      <li key={category?._id}>
+                        <NavLink
+                          className="nav-link"
+                          to={`/category/${category.slug}`}
+                        >
+                          {category?.name}
+                        </NavLink>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </li>
+            </div>
 
             {!auth?.user ? (
               <>

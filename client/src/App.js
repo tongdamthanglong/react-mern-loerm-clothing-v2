@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Search from "./pages/Search";
 import ProductView from "./pages/ProductView";
+import CategoriesList from "./pages/CategoriesList";
+import CategoryView from "./pages/CategoryView";
 
 import PrivateRoute from "./components/routes/PrivateRoute";
 import UserDashboard from "./pages/user/Dashboard";
@@ -34,6 +36,8 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/search" element={<Search />} />
         <Route path="/product/:slug" element={<ProductView />} />
+        <Route path="/categories" element={<CategoriesList />} />
+        <Route path="/category/:slug" element={<CategoryView />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 

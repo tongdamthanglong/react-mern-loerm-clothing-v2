@@ -1,5 +1,12 @@
 import express from "express";
-import { create, update, remove, list, read } from "../controllers/category.js";
+import {
+  create,
+  update,
+  remove,
+  list,
+  read,
+  productsByCategory,
+} from "../controllers/category.js";
 import { requireSignin, isAdmin } from "../middlewares/auth.js";
 
 const router = express.Router();
@@ -18,5 +25,8 @@ router.get("/categories", list);
 
 // get each category by slug
 router.get("/category/:slug", read);
+
+// get products by category
+router.get("/products-by-category/:slug", productsByCategory);
 
 export default router;
