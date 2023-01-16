@@ -11,6 +11,7 @@ import Search from "./pages/Search";
 import ProductView from "./pages/ProductView";
 import CategoriesList from "./pages/CategoriesList";
 import CategoryView from "./pages/CategoryView";
+import Cart from "./pages/Cart";
 
 import PrivateRoute from "./components/routes/PrivateRoute";
 import UserDashboard from "./pages/user/Dashboard";
@@ -30,7 +31,7 @@ function App() {
   return (
     <BrowserRouter>
       <Menu />
-      <Toaster />
+      <Toaster position="bottom-right" />
       <Routes>
         <Route index element={<Home />} />
         <Route path="/shop" element={<Shop />} />
@@ -38,6 +39,7 @@ function App() {
         <Route path="/product/:slug" element={<ProductView />} />
         <Route path="/categories" element={<CategoriesList />} />
         <Route path="/category/:slug" element={<CategoryView />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 

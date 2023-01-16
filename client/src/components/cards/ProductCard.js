@@ -1,8 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../context/cart";
+
 import { Badge } from "antd";
+import { toast } from "react-hot-toast";
 
 const ProductCard = ({ product }) => {
+  const [cart, setCart] = useCart();
   const navigate = useNavigate();
 
   return (
@@ -48,6 +52,10 @@ const ProductCard = ({ product }) => {
         <button
           className="btn btn-info col card-button"
           style={{ borderBottomRightRadius: "5px" }}
+          onClick={() => {
+            setCart([...cart, product]);
+            toast.success(`${product.name} is added.`);
+          }}
         >
           Add to Cart
         </button>

@@ -26,6 +26,8 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .nav-link {
+  font-family: "Segoe UI", sans-serif !important;
+  font-size: 16px !important;
   font-weight: 400;
   margin-left: 10px !important;
   margin-right: 10px !important;
@@ -38,9 +40,9 @@ input[type="search"]::-webkit-search-cancel-button {
 /* ############# Bootstrap style override ############# */
 .active {
   /* border-bottom: 2px solid cyan; */
-  background-color: transparent;
-  text-decoration: underline solid #0dcaf0 1.5px;
-  text-underline-offset: 7px;
+  background-color: transparent !important;
+  text-decoration: underline solid #0dcaf0 1.5px !important;
+  text-underline-offset: 7px !important;
 }
 
 .list-group-item.active {
@@ -74,11 +76,27 @@ input[type="search"]::-webkit-search-cancel-button {
   border-color: #bbb;
 }
 
+.logo {
+  background-color: transparent !important;
+  text-decoration: none !important;
+  text-underline-offset: none !important;
+}
+
 /* ############# Bootstrap style override ############# */
 
 /* antd */
 
 .ant-ribbon-text {
+  color: #fff !important;
+}
+
+.ant-badge-count {
+  background-color: #0dcaf0 !important;
+  color: #fff !important;
+}
+
+.ant-scroll-number-only-unit {
+  background-color: #0dcaf0 !important;
   color: #fff !important;
 }
 

@@ -3,12 +3,15 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useCategory from "../../hooks/useCategory";
 import { useAuth } from "../../context/auth";
+import { useCart } from "../../context/cart";
 
 import Search from "../forms/Search";
+import { Badge } from "antd";
 
 const Menu = () => {
   // context
   const [auth, setAuth] = useAuth();
+  const [cart, setCart] = useCart();
   // hook
   const categories = useCategory();
   const navigate = useNavigate();
@@ -21,13 +24,13 @@ const Menu = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-between align-items-center ps-2 pe-4">
+      <div className="d-flex justify-content-between align-items-center ps-2 pe-4 sticky-top bg-white">
         <div
           className="d-flex justify-content-between align-items-center gap-3 mt-3 mb-4"
           style={{ width: "50%" }}
         >
           <NavLink
-            className="text-info fw-semibold text-center"
+            className="logo text-info fw-semibold text-center"
             style={{ margin: "0px", width: "30%", textDecoration: "none" }}
             to="/"
           >
@@ -44,13 +47,11 @@ const Menu = () => {
                 Home
               </NavLink>
             </li>
-
             <li className="nav-item">
               <NavLink className="nav-link" aria-current="page" to="/shop">
                 Shop
               </NavLink>
             </li>
-
             <div className="dropdown">
               <li>
                 <a
@@ -82,7 +83,6 @@ const Menu = () => {
                 </ul>
               </li>
             </div>
-
             {!auth?.user ? (
               <>
                 <li className="nav-item">
@@ -127,6 +127,18 @@ const Menu = () => {
                 </li>
               </div>
             )}
+            <li className="nav-item" style={{ marginTop: "3.3px" }}>
+              <Badge
+                showZero
+                count={cart?.length || 0}
+                overflowCount={10}
+                offset={[-5, 5]}
+              >
+                <NavLink className="nav-link" aria-current="page" to="/cart">
+                  Cart
+                </NavLink>
+              </Badge>
+            </li>
           </ul>
         </div>
       </div>

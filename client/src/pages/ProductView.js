@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useCart } from "../context/cart";
+
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 import ProductCard from "../components/cards/ProductCard";
 
 const ProductView = () => {
+  const [cart, setCart] = useCart();
+
   const [product, setProduct] = useState({});
   const [related, setRelated] = useState([]);
+
   const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (params?.slug) loadProduct();
@@ -86,12 +93,17 @@ const ProductView = () => {
             <li className="list-group-item" style={{ width: "100%" }}>
               <button
                 className="btn btn-outline-info col card-button"
+                onClick={() => {
+                  setCart([...cart, product]);
+                  toast.success(`${product.name} is added.`);
+                }}
                 style={{ borderRadius: "0px", width: "50%" }}
               >
                 Add to Cart
               </button>
               <button
                 className="btn btn-info col card-button"
+                onClick={() => navigate("/checkout")}
                 style={{ borderRadius: "0px", width: "50%" }}
               >
                 Checkout
