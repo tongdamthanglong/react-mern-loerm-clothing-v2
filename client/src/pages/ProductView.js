@@ -95,6 +95,10 @@ const ProductView = () => {
                 className="btn btn-outline-info col card-button"
                 onClick={() => {
                   setCart([...cart, product]);
+                  localStorage.setItem(
+                    "cart",
+                    JSON.stringify([...cart, product])
+                  );
                   toast.success(`${product.name} is added.`);
                 }}
                 style={{ borderRadius: "0px", width: "50%" }}
