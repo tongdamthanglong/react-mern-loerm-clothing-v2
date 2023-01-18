@@ -16,6 +16,16 @@ const Cart = () => {
     let index = myCart.findIndex((item) => item._id === productId);
     myCart.splice(index, 1);
     setCart(myCart);
+    localStorage.setItem("cart", JSON.stringify(myCart));
+  };
+
+  const cartTotal = () => {
+    let total = 0;
+    cart?.map((item) => (total += item.price));
+    return total.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
   };
 
   return (
@@ -77,7 +87,12 @@ const Cart = () => {
                 ))}
               </div>
             </div>
-            <div className="col-md-4">Total/ Address/ Payment</div>
+            <div className="col-md-4">
+              <h4>Your Cart Summary</h4>
+              Total/ Address/ Payment
+              <hr />
+              <h6>Total: {cartTotal()}</h6>
+            </div>
           </div>
         </div>
       )}

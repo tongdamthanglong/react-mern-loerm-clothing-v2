@@ -54,6 +54,7 @@ const ProductCard = ({ product }) => {
           style={{ borderBottomRightRadius: "5px" }}
           onClick={() => {
             setCart([...cart, product]);
+            localStorage.setItem("cart", JSON.stringify([...cart, product]));
             toast.success(`${product.name} is added.`);
           }}
         >
