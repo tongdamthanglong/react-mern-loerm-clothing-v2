@@ -92,6 +92,40 @@ const Cart = () => {
               Total/ Address/ Payment
               <hr />
               <h6>Total: {cartTotal()}</h6>
+              {auth?.user?.address ? (
+                <>
+                  <div className="mb-3">
+                    <hr />
+                    <p className="fw-semibold">
+                      Address: {auth?.user?.address}
+                    </p>
+                  </div>
+                  <button
+                    className="btn btn-outline-info"
+                    onClick={() => navigate("/dashboard/user/profile")}
+                  >
+                    Update Address
+                  </button>
+                </>
+              ) : (
+                <div className="mb-3">
+                  {auth?.token ? (
+                    <button
+                      className="btn btn-outline-info mt-2"
+                      onClick={() => navigate("/dashboard/user/profile")}
+                    >
+                      Add Delivery Address
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-outline-danger mt-2"
+                      onClick={() => navigate("/login", { state: "/cart" })}
+                    >
+                      Login to Checkout
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
