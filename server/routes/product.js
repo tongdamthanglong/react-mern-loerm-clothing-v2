@@ -12,6 +12,8 @@ import {
   listProducts,
   productsSearch,
   relatedProducts,
+  getToken,
+  processPayment,
 } from "../controllers/product.js";
 import { requireSignin, isAdmin } from "../middlewares/auth.js";
 
@@ -47,5 +49,9 @@ router.get("/products/search/:keyword", productsSearch);
 
 // related category product
 router.get("/related-products/:productId/:categoryId", relatedProducts);
+
+// create token and transaction
+router.get("/braintree/token", getToken);
+router.post("/braintree/payment", processPayment);
 
 export default router;
