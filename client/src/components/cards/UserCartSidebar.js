@@ -39,6 +39,15 @@ const UserCartSidebar = () => {
     });
   };
 
+  const handleBuy = async () => {
+    try {
+      const { nonce } = await instance.requestPaymentMethod();
+      console.log("nonce => ", nonce);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="col-md-4">
       <h4>Your Cart Summary</h4>
@@ -91,6 +100,13 @@ const UserCartSidebar = () => {
               }}
               onInstance={(instance) => setInstance(instance)}
             />
+            <button
+              onClick={handleBuy}
+              className="btn btn-info col-md-12"
+              disabled={!auth?.user?.address}
+            >
+              Buy
+            </button>
           </>
         )}
       </div>
