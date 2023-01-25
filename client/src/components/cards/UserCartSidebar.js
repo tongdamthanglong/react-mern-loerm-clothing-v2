@@ -3,12 +3,14 @@ import { useAuth } from "../../context/auth";
 import { useCart } from "../../context/cart";
 import { useNavigate } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
+import toast from "react-hot-toast";
 import axios from "axios";
 
 const UserCartSidebar = () => {
   // state
   const [clientToken, setClientToken] = useState("");
   const [instance, setInstance] = useState("");
+  const [loading, setLoading] = useState(false);
   // context
   const [auth, setAuth] = useAuth();
   const [cart, setCart] = useCart();
@@ -41,12 +43,17 @@ const UserCartSidebar = () => {
 
   const handleBuy = async () => {
     try {
+      setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
-      console.log("nonce => ", nonce);
       const { data } = await axios.post("/braintree/payment", { nonce, cart });
-      console.log("handle buy response => ", data);
+      setLoading(false);
+      localStorage.removeItem("cart");
+      setCart([]);
+      navigate("/dashboard/user/orders");
+      toast.success("Payment Successful!");
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -105,9 +112,9 @@ const UserCartSidebar = () => {
             <button
               onClick={handleBuy}
               className="btn btn-info col-md-12"
-              disabled={!auth?.user?.address || !instance}
+              disabled={!auth?.user?.address || !instance || loading}
             >
-              Buy
+              {loading ? "Processing.." : "Buy"}
             </button>
           </>
         )}

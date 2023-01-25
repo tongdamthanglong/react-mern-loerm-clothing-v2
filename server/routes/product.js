@@ -52,6 +52,6 @@ router.get("/related-products/:productId/:categoryId", relatedProducts);
 
 // create token and transaction
 router.get("/braintree/token", getToken);
-router.post("/braintree/payment", processPayment);
+router.post("/braintree/payment", requireSignin, processPayment);
 
 export default router;
