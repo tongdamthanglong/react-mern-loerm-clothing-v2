@@ -43,6 +43,8 @@ const UserCartSidebar = () => {
     try {
       const { nonce } = await instance.requestPaymentMethod();
       console.log("nonce => ", nonce);
+      const { data } = await axios.post("/braintree/payment", { nonce, cart });
+      console.log("handle buy response => ", data);
     } catch (error) {
       console.log(error);
     }
@@ -103,7 +105,7 @@ const UserCartSidebar = () => {
             <button
               onClick={handleBuy}
               className="btn btn-info col-md-12"
-              disabled={!auth?.user?.address}
+              disabled={!auth?.user?.address || !instance}
             >
               Buy
             </button>

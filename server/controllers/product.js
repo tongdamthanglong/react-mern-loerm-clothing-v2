@@ -234,12 +234,11 @@ export const getToken = async (req, res) => {
 
 export const processPayment = async (req, res) => {
   try {
-    console.log(req.body);
-    let nonceFromTheClient = req.body.paymentMethodNonce;
+    const { nonce } = req.body;
     let newTransaction = gateway.transaction.sale(
       {
         amount: "10.00",
-        paymentMethodNonce: nonceFromTheClient,
+        paymentMethodNonce: nonce,
         options: {
           submitForSettlement: true,
         },
