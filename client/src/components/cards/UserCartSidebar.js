@@ -111,7 +111,7 @@ const UserCartSidebar = () => {
             />
             <button
               onClick={handleBuy}
-              className="btn btn-info col-md-12"
+              className="btn btn-info col-md-12 mb-5"
               disabled={!auth?.user?.address || !instance || loading}
             >
               {loading ? "Processing.." : "Buy"}

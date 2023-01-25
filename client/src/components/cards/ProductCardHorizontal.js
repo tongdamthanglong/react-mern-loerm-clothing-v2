@@ -1,7 +1,7 @@
 import React from "react";
 import { useCart } from "../../context/cart";
 
-const ProductCardHorizontal = ({ productCart }) => {
+const ProductCardHorizontal = ({ productCart, remove = true }) => {
   const [cart, setCart] = useCart();
 
   const removeFromCart = (productId) => {
@@ -13,7 +13,7 @@ const ProductCardHorizontal = ({ productCart }) => {
   };
 
   return (
-    <div className="card mb-3" style={{ maxWidth: "600px" }}>
+    <div className="card mb-3" style={{ minWidth: "550px" }}>
       <div className="row g-0">
         <div className="col-md-4">
           <img
@@ -38,12 +38,14 @@ const ProductCardHorizontal = ({ productCart }) => {
             )}..`}</p>
             <div className="d-flex justify-content-between">
               <p className="card-text">${productCart?.price}</p>
-              <p
-                className="text-danger pointer"
-                onClick={() => removeFromCart(productCart._id)}
-              >
-                Remove
-              </p>
+              {remove && (
+                <p
+                  className="text-danger pointer"
+                  onClick={() => removeFromCart(productCart._id)}
+                >
+                  Remove
+                </p>
+              )}
             </div>
           </div>
         </div>

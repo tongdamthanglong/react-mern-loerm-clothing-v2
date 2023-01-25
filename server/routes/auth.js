@@ -1,5 +1,11 @@
 import express from "express";
-import { register, login, updateProfile, secret } from "../controllers/auth.js";
+import {
+  register,
+  login,
+  updateProfile,
+  getOrders,
+  secret,
+} from "../controllers/auth.js";
 import { requireSignin, isAdmin } from "../middlewares/auth.js";
 
 const router = express.Router();
@@ -20,6 +26,9 @@ router.get("/admin-check", requireSignin, isAdmin, (req, res) =>
 
 // update user profile
 router.put("/profile", requireSignin, updateProfile);
+
+// orders
+router.get("/orders", requireSignin, getOrders);
 
 // secret route test
 router.get("/secret", requireSignin, isAdmin, secret);
