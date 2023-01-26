@@ -14,6 +14,7 @@ import {
   relatedProducts,
   getToken,
   processPayment,
+  orderStatus,
 } from "../controllers/product.js";
 import { requireSignin, isAdmin } from "../middlewares/auth.js";
 
@@ -53,5 +54,8 @@ router.get("/related-products/:productId/:categoryId", relatedProducts);
 // create token and transaction
 router.get("/braintree/token", getToken);
 router.post("/braintree/payment", requireSignin, processPayment);
+
+// update order status
+router.put("/order-status/:orderId", requireSignin, isAdmin, orderStatus);
 
 export default router;

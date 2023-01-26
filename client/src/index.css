@@ -118,6 +118,12 @@ input[type="search"]::-webkit-search-cancel-button {
   margin-left: 8px;
 }
 
+span.ant-select-selection-item {
+  font-family: "Segoe UI", sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400;
+}
+
 /* #####################JUMBOTRON######################### */
 
 /* jumbotron color animation css */

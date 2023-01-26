@@ -3,15 +3,25 @@ import { useAuth } from "../../context/auth";
 
 import AdminMenu from "../../components/nav/AdminMenu";
 import ProductCardHorizontal from "../../components/cards/ProductCardHorizontal";
+import { Select } from "antd";
 
 import moment from "moment";
 import axios from "axios";
 
 const Orders = () => {
-  // state
-  const [orders, setOrders] = useState([]);
   // context
   const [auth, setAuth] = useAuth();
+
+  // state
+  const [orders, setOrders] = useState([]);
+  const [status, setStatus] = useState([
+    "Not Processed",
+    "Processing",
+    "Shipped",
+    "Delivered",
+    "Cancelled",
+  ]);
+  const [changedStatus, setChangedStatus] = useState("");
 
   useEffect(() => {
     if (auth?.token) getOrders();
@@ -21,6 +31,18 @@ const Orders = () => {
     try {
       const { data } = await axios.get("/all-orders");
       setOrders(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleChange = async (orderId, value) => {
+    setChangedStatus(value);
+    try {
+      const { data } = await axios.put(`/order-status/${orderId}`, {
+        status: value,
+      });
+      getOrders();
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +77,22 @@ const Orders = () => {
                     <tbody>
                       <tr>
                         <td>{index + 1}</td>
-                        <td>{order?.status}</td>
+                        <td style={{ paddingBottom: "0px", paddingTop: "5px" }}>
+                          <Select
+                            bordered={false}
+                            defaultValue={order?.status}
+                            onChange={(value) =>
+                              handleChange(order?._id, value)
+                            }
+                          >
+                            {status?.map((s, i) => (
+                              <Select.Option key={i} value={s}>
+                                {s}
+                              </Select.Option>
+                            ))}
+                            0
+                          </Select>
+                        </td>
                         <td>{order?.buyer?.name}</td>
                         <td>{moment(order?.createdAt).fromNow()}</td>
                         <td>
