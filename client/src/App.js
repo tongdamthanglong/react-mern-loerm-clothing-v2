@@ -24,6 +24,7 @@ import AdminCategory from "./pages/admin/Category";
 import AdminProduct from "./pages/admin/Product";
 import AdminProducts from "./pages/admin/Products";
 import AdminProductUpdate from "./pages/admin/ProductUpdate";
+import AdminOrders from "./pages/admin/Orders";
 
 import NotFound from "./pages/notFound/NotFound";
 
@@ -58,6 +59,7 @@ function App() {
             path="admin/product/update/:slug"
             element={<AdminProductUpdate />}
           />
+          <Route path="admin/all-orders" element={<AdminOrders />} />
         </Route>
 
         <Route path="*" element={<NotFound />} replace />

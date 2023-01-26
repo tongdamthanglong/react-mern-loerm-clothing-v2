@@ -4,6 +4,7 @@ import {
   login,
   updateProfile,
   getOrders,
+  allOrders,
   secret,
 } from "../controllers/auth.js";
 import { requireSignin, isAdmin } from "../middlewares/auth.js";
@@ -29,6 +30,9 @@ router.put("/profile", requireSignin, updateProfile);
 
 // orders
 router.get("/orders", requireSignin, getOrders);
+
+// get all orders by admin
+router.get("/all-orders", requireSignin, isAdmin, allOrders);
 
 // secret route test
 router.get("/secret", requireSignin, isAdmin, secret);

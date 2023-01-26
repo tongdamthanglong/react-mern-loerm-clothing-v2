@@ -144,6 +144,18 @@ export const getOrders = async (req, res) => {
   }
 };
 
+export const allOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({})
+      .populate("products", "-photo")
+      .populate("buyer", "name")
+      .sort({ createdAt: -1 });
+    res.json(orders);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const secret = async (req, res) => {
   res.json({ currentUser: req.user });
 };
