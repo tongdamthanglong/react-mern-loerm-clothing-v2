@@ -13,7 +13,7 @@ const Cart = () => {
       <Jumbotron
         title={`Shopping Cart`}
         subtitle={
-          cart?.length > 1
+          cart?.length >= 1
             ? `You have ${cart?.length} items in cart.`
             : "Empty Cart."
         }

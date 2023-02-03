@@ -107,7 +107,15 @@ const ProductView = () => {
               </button>
               <button
                 className="btn btn-info col card-button"
-                onClick={() => navigate("/checkout")}
+                onClick={() => {
+                  setCart([...cart, product]);
+                  localStorage.setItem(
+                    "cart",
+                    JSON.stringify([...cart, product])
+                  );
+                  toast.success(`${product.name} is added.`);
+                  navigate("/cart");
+                }}
                 style={{ borderRadius: "0px", width: "50%" }}
               >
                 Checkout
